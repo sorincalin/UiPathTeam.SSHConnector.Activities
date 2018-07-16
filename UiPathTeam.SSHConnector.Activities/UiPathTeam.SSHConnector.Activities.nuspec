@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package>
+  <metadata>
+    <id>UiPathTeam.SSHConnector.Activities</id>
+    <version>1.0.1</version>
+    <title>UiPathTeam.SSHConnector.Activities</title>
+    <authors>Sorin Calin</authors>
+    <owners>UiPath</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Custom activities that allow creation and usage of an SSH connection.</description>
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>UiPath 2018</copyright>
+    <tags>UiPath SSH</tags>
+    <iconUrl>http://www.uipath.com/hubfs/Logos/uipath-nuget-logo.png</iconUrl>
+  </metadata>
+</package>

@@ -14,10 +14,9 @@ using System.Windows.Shapes;
 
 namespace UiPathTeam.SSHConnector.Activities
 {
-    // Interaction logic for ActivityDesigner1.xaml
-    public partial class ActivityDesigner1
+    public partial class SSHRunCommandActivityDesigner
     {
-        public ActivityDesigner1()
+        public SSHRunCommandActivityDesigner()
         {
             InitializeComponent();
         }
