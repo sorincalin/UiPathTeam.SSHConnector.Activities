@@ -9,8 +9,6 @@ namespace UiPathTeam.SSHConnector.Activities
     [DisplayName("SSH Run Command")]
     public class SSHRunCommandActivity : CodeActivity
     {
-        [Category("Input")]
-        public InArgument<SshClient> SSHClient { get; set; }
 
         [Category("Input")]
         [RequiredArgument]
@@ -18,6 +16,9 @@ namespace UiPathTeam.SSHConnector.Activities
         [Category("Input")]
         [RequiredArgument]
         public InArgument<TimeSpan> Timeout { get; set; }
+
+        [Category("Input Optional")]
+        public InArgument<SshClient> SSHClient { get; set; }
 
         [Category("Output")]
         public OutArgument<int> ExitStatus { get; set; }
