@@ -52,8 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test_SSHRunCommandActivity.cs" />
-    <Compile Include="Test_SSHConnectScopeActivity.cs" />
+    <Compile Include="Test_SSHConnectorActivities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -27,7 +27,9 @@ namespace UiPathTeam.SSHConnector.Activities
         [RequiredArgument]
         [Category("SSH Settings")]
         public InArgument<string> Password { get; set; }
-
+        [RequiredArgument]
+        [Category("SSH Settings")]
+        public InArgument<TimeSpan>Timeout { get; set; }
         [Category("Proxy Settings")]
         [DisplayName("Proxy Host")]
         public InArgument<string> ProxyHost { get; set; }
@@ -86,6 +88,8 @@ namespace UiPathTeam.SSHConnector.Activities
             {
                 connectionInfo = new PasswordConnectionInfo(Host.Get(context), Port.Get(context), Username.Get(context), Password.Get(context));
             }
+
+            connectionInfo.Timeout = Timeout.Get(context);
 
             sshClient = new SshClient(connectionInfo);
             sshClient.Connect();
