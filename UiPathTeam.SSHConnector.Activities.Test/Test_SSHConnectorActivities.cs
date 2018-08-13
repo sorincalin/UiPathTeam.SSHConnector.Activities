@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Activities;
 using System.Activities.Statements;
+using System.Net;
+using System.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Renci.SshNet;
 
@@ -31,7 +33,7 @@ namespace UiPathTeam.SSHConnector.Activities.Test
             {
                 Host = Test_SSHHost,
                 Username = Test_SSHUsername,
-                Password = Test_SSHPassword,
+                Password = new InArgument<SecureString>(value => new NetworkCredential("", Test_SSHPassword).SecurePassword),
                 Port = 22,
                 Timeout = TimeSpan.FromSeconds(TimeoutInSeconds)
             };
@@ -60,7 +62,7 @@ namespace UiPathTeam.SSHConnector.Activities.Test
             {
                 Host = Test_SSHHost,
                 Username = Test_SSHUsername,
-                Password = Test_SSHPassword,
+                Password = new InArgument<SecureString>(value => new NetworkCredential("", Test_SSHPassword).SecurePassword),
                 Port = 22,
                 Timeout = TimeSpan.FromSeconds(TimeoutInSeconds),
                 ProxyHost = Test_ProxyHost,
@@ -91,7 +93,7 @@ namespace UiPathTeam.SSHConnector.Activities.Test
             {
                 Host = Test_SSHHost,
                 Username = Test_SSHUsername,
-                Password = Test_SSHPassword,
+                Password = new InArgument<SecureString>(value => new NetworkCredential("", Test_SSHPassword).SecurePassword),
                 Port = 22,
                 Timeout = TimeSpan.FromSeconds(TimeoutInSeconds)
             };

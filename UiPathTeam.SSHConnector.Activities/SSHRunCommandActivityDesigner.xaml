@@ -20,7 +20,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Width="Auto" Text="Cmd " />
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Width="Auto" Text="Command " />
                     <sapv:ExpressionTextBox HintText="Enter a VB Expression" Expression="{Binding ModelItem.Command, ConverterParameter=In, Converter={StaticResource ArgumentToExpressionConverter}, Mode=TwoWay}" ExpressionType="{x:Type s:String}" Grid.Row="0" Grid.Column="1" 
                         OwnerActivity="{Binding ModelItem}" Margin="0,5" MaxLines="1" />
                 </Grid>

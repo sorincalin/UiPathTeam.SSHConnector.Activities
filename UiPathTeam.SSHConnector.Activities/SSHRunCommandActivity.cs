@@ -12,19 +12,25 @@ namespace UiPathTeam.SSHConnector.Activities
 
         [Category("Input")]
         [RequiredArgument]
+        [Description("Command to be sent over the SSH connection. Multiple commands can be linked together according to the target's machine specific OS.")]
         public InArgument<string> Command { get; set; }
         [Category("Input")]
         [RequiredArgument]
+        [Description("Timeout for the SSH command.")]
         public InArgument<TimeSpan> Timeout { get; set; }
 
         [Category("Input Optional")]
+        [Description("SshClient object to be used when not in a SSH Connect Scope.")]
         public InArgument<SshClient> SSHClient { get; set; }
 
         [Category("Output")]
+        [Description("Status code of the command.")]
         public OutArgument<int> ExitStatus { get; set; }
         [Category("Output")]
+        [Description("Text result of the command.")]
         public OutArgument<string> Result { get; set; }
         [Category("Output")]
+        [Description("Execution error of the command.")]
         public OutArgument<string> Error { get; set; }
 
         protected override void Execute(CodeActivityContext context)
