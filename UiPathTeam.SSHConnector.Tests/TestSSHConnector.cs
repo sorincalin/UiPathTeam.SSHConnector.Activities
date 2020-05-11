@@ -15,8 +15,8 @@ namespace UiPathTeam.SSHConnector.Tests
         // ****************** WARNING *******************
         // Please note that I'm using a local SSH server and a free, online Proxy server.
         public const string Test_SSHHost = "192.168.173.132";
-        public const string Test_SSHUsername = "sorin";
-        public const string Test_SSHPassword = "1qazXSW@";
+        public const string Test_SSHUsername = "*******";
+        public const string Test_SSHPassword = "*******";
         public const string Test_ExpectedPrompt = @"[a-zA-Z0-9_.-]*@[a-zA-Z0-9_.-]*:\~.*\\$ $";
 
         public const string Test_SSHCommand = "help";
