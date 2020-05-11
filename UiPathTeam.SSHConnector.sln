@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UiPathTeam.SSHConnector", "UiPathTeam.SSHConnector", "{7D4E0718-608A-4BF8-8E37-5CB6D78EDADE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UiPathTeam.SSHConnector", "UiPathTeam.SSHConnector\UiPathTeam.SSHConnector\UiPathTeam.SSHConnector.csproj", "{BAA6F58A-B6EA-4CC8-BA13-D0CC7A61B301}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UiPathTeam.SSHConnector.Activities", "UiPathTeam.SSHConnector\UiPathTeam.SSHConnector.Activities\UiPathTeam.SSHConnector.Activities.csproj", "{B6D0B041-924E-4DAB-BF88-9E109E5F9ABC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UiPathTeam.SSHConnector.Activities.Design", "UiPathTeam.SSHConnector\UiPathTeam.SSHConnector.Activities.Design\UiPathTeam.SSHConnector.Activities.Design.csproj", "{DEF07A4E-733C-4C00-A7C7-FEDC338B5D08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{D6C58363-C104-45C5-AD83-3F6B46290152}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UiPath.Shared.Activities", "Shared\UiPath.Shared.Activities\UiPath.Shared.Activities.shproj", "{4546856D-EA50-45C6-9419-EEEACB5A80AA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UiPath.Shared.Activities.Design", "Shared\UiPath.Shared.Activities.Design\UiPath.Shared.Activities.Design.shproj", "{DF9C43F0-ADD3-4FBF-995E-84B92F9CBF25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPathTeam.SSHConnector.Tests", "UiPathTeam.SSHConnector.Tests\UiPathTeam.SSHConnector.Tests.csproj", "{DCCD5C7F-801D-4FBE-8E3E-0FDDAD57355A}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Shared\UiPath.Shared.Activities\UiPath.Shared.Activities.projitems*{4546856d-ea50-45c6-9419-eeeacb5a80aa}*SharedItemsImports = 13
+		Shared\UiPath.Shared.Activities.Design\UiPath.Shared.Activities.Design.projitems*{df9c43f0-add3-4fbf-995e-84b92f9cbf25}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAA6F58A-B6EA-4CC8-BA13-D0CC7A61B301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA6F58A-B6EA-4CC8-BA13-D0CC7A61B301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA6F58A-B6EA-4CC8-BA13-D0CC7A61B301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA6F58A-B6EA-4CC8-BA13-D0CC7A61B301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6D0B041-924E-4DAB-BF88-9E109E5F9ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6D0B041-924E-4DAB-BF88-9E109E5F9ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6D0B041-924E-4DAB-BF88-9E109E5F9ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6D0B041-924E-4DAB-BF88-9E109E5F9ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF07A4E-733C-4C00-A7C7-FEDC338B5D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF07A4E-733C-4C00-A7C7-FEDC338B5D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF07A4E-733C-4C00-A7C7-FEDC338B5D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF07A4E-733C-4C00-A7C7-FEDC338B5D08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCCD5C7F-801D-4FBE-8E3E-0FDDAD57355A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCCD5C7F-801D-4FBE-8E3E-0FDDAD57355A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCCD5C7F-801D-4FBE-8E3E-0FDDAD57355A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCCD5C7F-801D-4FBE-8E3E-0FDDAD57355A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BAA6F58A-B6EA-4CC8-BA13-D0CC7A61B301} = {7D4E0718-608A-4BF8-8E37-5CB6D78EDADE}
+		{B6D0B041-924E-4DAB-BF88-9E109E5F9ABC} = {7D4E0718-608A-4BF8-8E37-5CB6D78EDADE}
+		{DEF07A4E-733C-4C00-A7C7-FEDC338B5D08} = {7D4E0718-608A-4BF8-8E37-5CB6D78EDADE}
+		{4546856D-EA50-45C6-9419-EEEACB5A80AA} = {D6C58363-C104-45C5-AD83-3F6B46290152}
+		{DF9C43F0-ADD3-4FBF-995E-84B92F9CBF25} = {D6C58363-C104-45C5-AD83-3F6B46290152}
+		{DCCD5C7F-801D-4FBE-8E3E-0FDDAD57355A} = {7D4E0718-608A-4BF8-8E37-5CB6D78EDADE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0263F02-5D39-4BBB-81ED-F74129486A46}
+	EndGlobalSection
+EndGlobal
