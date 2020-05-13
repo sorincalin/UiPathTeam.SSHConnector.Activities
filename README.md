@@ -13,9 +13,11 @@ Useful for dealing with UNIX systems that expose an SSH endpoint.
 
 Contains three custom activities that facilitate establishing an SSH connection and sending commands through it. 
 
-<b>SSHConnectionScopeActivity:</b>
-<b>SSHRunCommandActivity:</b>
-<b>SSHRunShellCommandActivity:</b>
+<b>SSHConnectionScopeActivity</b>
+
+<b>SSHRunCommandActivity</b>
+
+<b>SSHRunShellCommandActivity</b>
 
 <b>Dependencies</b>
 
