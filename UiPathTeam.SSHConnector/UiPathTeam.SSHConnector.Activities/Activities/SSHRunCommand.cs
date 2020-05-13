@@ -87,10 +87,15 @@ namespace UiPathTeam.SSHConnector.Activities
 
             // Set a timeout on the execution
             var task = ExecuteWithTimeout(context, cancellationToken);
-            if (await Task.WhenAny(task, Task.Delay(TimeoutMS.Get(context), cancellationToken)) != task) throw new TimeoutException(Resources.Timeout_Error);
-
-            if (task.Exception != null) { throw task.Exception; }
-
+            if (await Task.WhenAny(task, Task.Delay(TimeoutMS.Get(context), cancellationToken)) == task)
+            {
+                await task;
+            }
+            else
+            {
+                throw new TimeoutException(Resources.Timeout_Error);
+            }
+            
             // Outputs
             return (ctx) => {
                 ExitCode.Set(ctx, task.Result.ExitStatus);
@@ -101,6 +106,8 @@ namespace UiPathTeam.SSHConnector.Activities
 
         private async Task<SshCommand> ExecuteWithTimeout(AsyncCodeActivityContext context, CancellationToken cancellationToken = default)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             SshClient sshClient;
             IObjectContainer scopeObjectContainer = context.DataContext.GetProperties()[SSHConnectScope.ParentContainerPropertyTag].GetValue(context.DataContext) as IObjectContainer;
 

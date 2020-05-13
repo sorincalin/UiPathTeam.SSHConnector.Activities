@@ -160,14 +160,19 @@ namespace UiPathTeam.SSHConnector.Activities
 
             // Set a timeout on the execution
             var task = ExecuteWithTimeout(context, cancellationToken);
-            if (await Task.WhenAny(task, Task.Delay(activityTimeout, cancellationToken)) != task) throw new TimeoutException(Resources.Timeout_Error);
-            
-            if (task.Exception != null) { throw task.Exception; }
+            if (await Task.WhenAny(task, Task.Delay(activityTimeout, cancellationToken)) == task)
+            {
+                await task;
+            }
+            else
+            {
+                throw new TimeoutException(Resources.Timeout_Error);
+            }
 
             _objectContainer.Add(sshClient);
             _objectContainer.Add(currentShellStream);
             _objectContainer.Add(expectedPromptRegex);
-            
+
             return (ctx) => {
                 // Schedule child activities
                 if (Body != null)
@@ -177,6 +182,8 @@ namespace UiPathTeam.SSHConnector.Activities
 
         private async Task ExecuteWithTimeout(NativeActivityContext context, CancellationToken cancellationToken = default)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             var sshPassword = new NetworkCredential("", Password.Get(context)).Password;
             var proxyPassword = new NetworkCredential("", ProxyPassword.Get(context)).Password;
             var sshTimeout = TimeSpan.FromMilliseconds(SSHTimeoutMS.Get(context));
