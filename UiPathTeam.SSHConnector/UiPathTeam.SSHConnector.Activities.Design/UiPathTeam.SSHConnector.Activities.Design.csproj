@@ -33,15 +33,10 @@
     <None Remove="Designers\SSHConnectScopeDesigner.xaml" />
     <None Remove="Designers\SSHRunCommandDesigner.xaml" />
     <None Remove="Designers\SSHRunShellCommandDesigner.xaml" />
-    <None Include="Designers\sshIcon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
   <!-- Package Icon -->
   <ItemGroup>
     <None Include="packageIcon.png" Pack="true" Visible="false" PackagePath="" />
-    <None Include="Designers\sshIcon.png" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
   <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
     <ItemGroup>
@@ -62,7 +57,6 @@
     <DocumentationFile>bin\$(Configuration)\UiPathTeam.SSHConnector.Activities.Design.xml</DocumentationFile>
     <ApplicationIcon />
     <Win32Resource />
-    <PackageIcon>sshIcon.png</PackageIcon>
     <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
@@ -133,6 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SSH.NET" Version="2016.1.0" />
   </ItemGroup>
   <Import Project="..\..\Shared\UiPath.Shared.Activities.Design\UiPath.Shared.Activities.Design.projitems" Label="Shared" />
 </Project>

@@ -113,15 +113,5 @@ namespace UiPathTeam.SSHConnector.Activities.Design.Properties {
                 return ResourceManager.GetString("Editing", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap sshIcon {
-            get {
-                object obj = ResourceManager.GetObject("sshIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
