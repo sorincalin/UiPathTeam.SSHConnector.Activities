@@ -102,7 +102,7 @@ namespace UiPathTeam.SSHConnector.Activities
         private async Task<SshCommand> ExecuteWithTimeout(AsyncCodeActivityContext context, CancellationToken cancellationToken = default)
         {
             SshClient sshClient;
-            IObjectContainer scopeObjectContainer = context.DataContext.GetProperties()[SSHConnectScope.ParentContainerPropertyTag].GetValue(context.DataContext) as IObjectContainer;
+            IObjectContainer scopeObjectContainer = context.DataContext.GetProperties()[SSHConnectScope.ParentContainerPropertyTag]?.GetValue(context.DataContext) as IObjectContainer;
 
             if (SSHClient.Expression == null)
             {
