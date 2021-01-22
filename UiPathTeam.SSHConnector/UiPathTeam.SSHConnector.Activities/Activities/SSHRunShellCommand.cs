@@ -111,9 +111,8 @@ namespace UiPathTeam.SSHConnector.Activities
 
             ShellStream shellStream;
             Regex expectedShellPromptRegex;
-
             IObjectContainer scopeObjectContainer = context.DataContext.GetProperties()[SSHConnectScope.ParentContainerPropertyTag]
-                                                                                ?.GetValue(context.DataContext) as IObjectContainer;
+                                                                                .GetValue(context.DataContext) as IObjectContainer;
 
             if (ShellStream.Expression == null)
             {

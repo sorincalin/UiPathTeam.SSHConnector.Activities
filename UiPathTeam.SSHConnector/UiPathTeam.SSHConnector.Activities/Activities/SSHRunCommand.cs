@@ -109,7 +109,7 @@ namespace UiPathTeam.SSHConnector.Activities
             cancellationToken.ThrowIfCancellationRequested();
 
             SshClient sshClient;
-            IObjectContainer scopeObjectContainer = context.DataContext.GetProperties()[SSHConnectScope.ParentContainerPropertyTag]?.GetValue(context.DataContext) as IObjectContainer;
+            IObjectContainer scopeObjectContainer = context.DataContext.GetProperties()[SSHConnectScope.ParentContainerPropertyTag].GetValue(context.DataContext) as IObjectContainer;
 
             if (SSHClient.Expression == null)
             {
