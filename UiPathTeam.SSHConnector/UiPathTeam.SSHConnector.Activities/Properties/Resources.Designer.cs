@@ -214,6 +214,24 @@ namespace UiPathTeam.SSHConnector.Activities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Used to Authenticate.
+        /// </summary>
+        public static string SSHConnectScope_PrivateKey_Description {
+            get {
+                return ResourceManager.GetString("SSHConnectScope_PrivateKey_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private Key.
+        /// </summary>
+        public static string SSHConnectScope_PrivateKey_DisplayName {
+            get {
+                return ResourceManager.GetString("SSHConnectScope_PrivateKey_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Proxy hostname or IP to be used for the SSH connection..
         /// </summary>
         public static string SSHConnectScope_ProxyHost_Description {

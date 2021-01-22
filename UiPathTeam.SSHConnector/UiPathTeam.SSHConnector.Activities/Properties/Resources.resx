@@ -285,42 +285,6 @@
     <value>Welcome message from target shell connection. Will be provided only if a shell is created.</value>
     <comment>property description</comment>
   </data>
-  <data name="Authentication_Category" xml:space="preserve">
-    <value>Authentication</value>
-    <comment>category</comment>
-  </data>
-  <data name="Common_Category" xml:space="preserve">
-    <value>Common</value>
-    <comment>category</comment>
-  </data>
-  <data name="Input_Category" xml:space="preserve">
-    <value>Input</value>
-    <comment>category</comment>
-  </data>
-  <data name="Output_Category" xml:space="preserve">
-    <value>Output</value>
-    <comment>category</comment>
-  </data>
-  <data name="Options_Category" xml:space="preserve">
-    <value>Options</value>
-    <comment>category</comment>
-  </data>
-  <data name="ValidationScope_Error" xml:space="preserve">
-    <value>Cannot be used outside of a {0}.</value>
-    <comment>error message; {0} is a container activity (e.g. a scope)</comment>
-  </data>
-  <data name="ValidationValue_Error" xml:space="preserve">
-    <value>Please provide a value for {0}.</value>
-    <comment>error message; {0} is the name of a missing property</comment>
-  </data>
-  <data name="ValidationExclusiveProperties_Error" xml:space="preserve">
-    <value>Please provide a value either for {0} or {1}, but not both.</value>
-    <comment>error message; {0} &amp; {1} are mutually exclusive activities</comment>
-  </data>
-  <data name="ValidationOverloadGroup_Error" xml:space="preserve">
-    <value>Please provide values for both {0} and {1}.</value>
-    <comment>error message; {0} &amp; {1} are complementary properties</comment>
-  </data>
   <data name="SSHRunShellCommand_DisplayName" xml:space="preserve">
     <value>SSH Run Shell Command</value>
     <comment>activity name</comment>
@@ -337,10 +301,6 @@
     <value>Command to be sent over the SSH connection.</value>
     <comment>property description</comment>
   </data>
-  <data name="Input_Category" xml:space="preserve">
-    <value>Input</value>
-    <comment>category</comment>
-  </data>
   <data name="SSHRunShellCommand_CheckExitCode_DisplayName" xml:space="preserve">
     <value>Check Exit Code</value>
     <comment>property name</comment>
@@ -348,10 +308,6 @@
   <data name="SSHRunShellCommand_CheckExitCode_Description" xml:space="preserve">
     <value>Check exit code.</value>
     <comment>property description</comment>
-  </data>
-  <data name="Options_Category" xml:space="preserve">
-    <value>Options</value>
-    <comment>category</comment>
   </data>
   <data name="SSHRunShellCommand_ShellStream_DisplayName" xml:space="preserve">
     <value>Shell Stream</value>
@@ -361,10 +317,6 @@
     <value>Inferred from SSH Connect Scope by default. ShellStream object to be used.</value>
     <comment>property description</comment>
   </data>
-  <data name="Options_Category" xml:space="preserve">
-    <value>Options</value>
-    <comment>category</comment>
-  </data>
   <data name="SSHRunShellCommand_ShellExpectedPrompt_DisplayName" xml:space="preserve">
     <value>Shell Expected Prompt</value>
     <comment>property name</comment>
@@ -373,10 +325,6 @@
     <value>Inferred from SSH Connect Scope by default. Regex matching the expected shell prompt to be used. Example: "[a-zA-Z0-9_.-]*@[a-zA-Z0-9_.-]*:\~.*\$ $"</value>
     <comment>property description</comment>
   </data>
-  <data name="Options_Category" xml:space="preserve">
-    <value>Options</value>
-    <comment>category</comment>
-  </data>
   <data name="SSHRunShellCommand_Result_DisplayName" xml:space="preserve">
     <value>Result</value>
     <comment>property name</comment>
@@ -384,10 +332,6 @@
   <data name="SSHRunShellCommand_Result_Description" xml:space="preserve">
     <value>Text result of the command.</value>
     <comment>property description</comment>
-  </data>
-  <data name="Output_Category" xml:space="preserve">
-    <value>Output</value>
-    <comment>category</comment>
   </data>
   <data name="SSHRunCommand_DisplayName" xml:space="preserve">
     <value>SSH Run Command</value>
@@ -405,10 +349,6 @@
     <value>Command to be sent over the SSH connection. Multiple commands can be linked together according to the target's machine specific OS.</value>
     <comment>property description</comment>
   </data>
-  <data name="Input_Category" xml:space="preserve">
-    <value>Input</value>
-    <comment>category</comment>
-  </data>
   <data name="SSHRunCommand_SSHClient_DisplayName" xml:space="preserve">
     <value>SSH Client</value>
     <comment>property name</comment>
@@ -416,10 +356,6 @@
   <data name="SSHRunCommand_SSHClient_Description" xml:space="preserve">
     <value>SshClient object to be used when not in a SSH Connect Scope.</value>
     <comment>property description</comment>
-  </data>
-  <data name="Options_Category" xml:space="preserve">
-    <value>Options</value>
-    <comment>category</comment>
   </data>
   <data name="SSHRunCommand_ExitCode_DisplayName" xml:space="preserve">
     <value>Exit Code</value>
@@ -429,10 +365,6 @@
     <value>Status code of the command.</value>
     <comment>property description</comment>
   </data>
-  <data name="Output_Category" xml:space="preserve">
-    <value>Output</value>
-    <comment>category</comment>
-  </data>
   <data name="SSHRunCommand_Result_DisplayName" xml:space="preserve">
     <value>Result</value>
     <comment>property name</comment>
@@ -440,10 +372,6 @@
   <data name="SSHRunCommand_Result_Description" xml:space="preserve">
     <value>Text result of the command.</value>
     <comment>property description</comment>
-  </data>
-  <data name="Output_Category" xml:space="preserve">
-    <value>Output</value>
-    <comment>category</comment>
   </data>
   <data name="SSHRunCommand_Error_DisplayName" xml:space="preserve">
     <value>Error</value>
@@ -453,8 +381,12 @@
     <value>Execution error text of the command</value>
     <comment>property description</comment>
   </data>
-  <data name="Output_Category" xml:space="preserve">
-    <value>Output</value>
-    <comment>category</comment>
+  <data name="SSHConnectScope_PrivateKey_Description" xml:space="preserve">
+    <value>Used to Authenticate</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SSHConnectScope_PrivateKey_DisplayName" xml:space="preserve">
+    <value>Private Key</value>
+    <comment>property name</comment>
   </data>
 </root>
