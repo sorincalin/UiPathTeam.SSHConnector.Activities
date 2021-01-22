@@ -49,6 +49,12 @@ namespace UiPathTeam.SSHConnector.Activities
         [LocalizedCategory(nameof(Resources.SSHSettings_Category))]
         public InArgument<int> Port { get; set; }
 
+        //NOTE: CHANGED BY SAM
+        [LocalizedDisplayName(nameof(Resources.SSHConnectScope_PrivateKey_DisplayName))]
+        [LocalizedDescription(nameof(Resources.SSHConnectScope_PrivateKey_Description))]
+        [LocalizedCategory(nameof(Resources.SSHSettings_Category))]
+        public InArgument<string> PrivateKey { get; set; }
+
         [LocalizedDisplayName(nameof(Resources.SSHConnectScope_Username_DisplayName))]
         [LocalizedDescription(nameof(Resources.SSHConnectScope_Username_Description))]
         [LocalizedCategory(nameof(Resources.SSHSettings_Category))]
@@ -134,7 +140,8 @@ namespace UiPathTeam.SSHConnector.Activities
             if (Host == null) metadata.AddValidationError(string.Format(Resources.ValidationValue_Error, nameof(Host)));
             if (Port == null) metadata.AddValidationError(string.Format(Resources.ValidationValue_Error, nameof(Port)));
             if (Username == null) metadata.AddValidationError(string.Format(Resources.ValidationValue_Error, nameof(Username)));
-            if (Password == null) metadata.AddValidationError(string.Format(Resources.ValidationValue_Error, nameof(Password)));
+            // Added logic to check if either password or private key is used
+            if (Password == null && PrivateKey == null) metadata.AddValidationError(string.Format(Resources.ValidationValue_Error, nameof(Password)));
 
             if (ProxyHost != null && ProxyPort == null)
                 metadata.AddValidationError(string.Format(Resources.ValidationValue_Error, nameof(ProxyPort)));
@@ -150,6 +157,7 @@ namespace UiPathTeam.SSHConnector.Activities
             var activityTimeout = TimeoutMS.Get(context);
             var host = Host.Get(context);
             var port = Port.Get(context);
+            var privatekey = PrivateKey.Get(context);
             var username = Username.Get(context);
             var password = Password.Get(context);
             var shellExpectedPrompt = ShellExpectedPrompt.Get(context);
@@ -193,6 +201,15 @@ namespace UiPathTeam.SSHConnector.Activities
                     connectionInfo = new PasswordConnectionInfo(Host.Get(context), Port.Get(context), Username.Get(context), sshPassword, ProxyTypes.Http, ProxyHost.Get(context), ProxyPort.Get(context));
                 }
             }
+
+            // Is private Key Defined?
+            else if (!string.IsNullOrEmpty(PrivateKey.Get(context)))
+            {
+                var pk = new PrivateKeyFile(PrivateKey.Get(context));
+                var keyFiles = new[] { pk };
+                connectionInfo = new PrivateKeyConnectionInfo(Host.Get(context),Port.Get(context), Username.Get(context), keyFiles);
+            }
+
             else // No Proxy defined
             {
                 connectionInfo = new PasswordConnectionInfo(Host.Get(context), Port.Get(context), Username.Get(context), sshPassword);
