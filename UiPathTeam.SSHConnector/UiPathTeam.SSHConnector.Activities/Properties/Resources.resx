@@ -230,7 +230,7 @@
     <comment>property description</comment>
   </data>
   <data name="SSHTimeout_Description" xml:space="preserve">
-    <value>Specifies the amount of time (in milliseconds) to wait for the SSH specific activity to run before an error is thrown. The default value is 30000 (1 minute).</value>
+    <value>Specifies the amount of time (in milliseconds) to wait for the SSH specific activity to run before an error is thrown. The default value is 30000 (30 seconds).</value>
     <comment>property description</comment>
   </data>
   <data name="SSHTimeout_DisplayName" xml:space="preserve">
@@ -452,6 +452,14 @@
   <data name="SSHRunCommand_Error_Description" xml:space="preserve">
     <value>Execution error text of the command</value>
     <comment>property description</comment>
+  </data>
+  <data name="SSHConnectScope_PrivateKey_Description" xml:space="preserve">
+    <value>File Path to SSH PrivateKey file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SSHConnectScope_PrivateKey_DisplayName" xml:space="preserve">
+    <value>PrivateKey File Path</value>
+    <comment>property name</comment>
   </data>
   <data name="Output_Category" xml:space="preserve">
     <value>Output</value>

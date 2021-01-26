@@ -27,7 +27,7 @@
     <PackageVersion>0.1.1.$([System.DateTime]::UtcNow.ToString(MMddHHmmss))</PackageVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <PackageVersion>0.1.1</PackageVersion>
+    <PackageVersion>2.0.3</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Designers\SSHConnectScopeDesigner.xaml" />
@@ -58,6 +58,7 @@
     <ApplicationIcon />
     <Win32Resource />
     <NeutralLanguage>en</NeutralLanguage>
+    <Version>2.0.3</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
     <WarningsAsErrors>NU1605</WarningsAsErrors>

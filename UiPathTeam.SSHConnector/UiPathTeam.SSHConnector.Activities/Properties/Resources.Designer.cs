@@ -214,6 +214,24 @@ namespace UiPathTeam.SSHConnector.Activities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File Path to SSH PrivateKey file.
+        /// </summary>
+        public static string SSHConnectScope_PrivateKey_Description {
+            get {
+                return ResourceManager.GetString("SSHConnectScope_PrivateKey_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PrivateKey File Path.
+        /// </summary>
+        public static string SSHConnectScope_PrivateKey_DisplayName {
+            get {
+                return ResourceManager.GetString("SSHConnectScope_PrivateKey_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Proxy hostname or IP to be used for the SSH connection..
         /// </summary>
         public static string SSHConnectScope_ProxyHost_Description {
@@ -565,7 +583,7 @@ namespace UiPathTeam.SSHConnector.Activities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specifies the amount of time (in milliseconds) to wait for the SSH specific activity to run before an error is thrown. The default value is 30000 (1 minute)..
+        ///   Looks up a localized string similar to Specifies the amount of time (in milliseconds) to wait for the SSH specific activity to run before an error is thrown. The default value is 30000 (30 seconds)..
         /// </summary>
         public static string SSHTimeout_Description {
             get {

@@ -18,7 +18,7 @@ namespace UiPathTeam.SSHConnector.Tests
         public const string Test_SSHUsername = "*******";
         public const string Test_SSHPassword = "*******";
         public const string Test_ExpectedPrompt = @"[a-zA-Z0-9_.-]*@[a-zA-Z0-9_.-]*:\~.*\\$ $";
-
+        public const string Test_SSHPrivateKeyFile = @"c:\mykey.pem";
         public const string Test_SSHCommand = "help";
 
         public const string Test_ProxyHost = "80.211.41.5";
@@ -99,6 +99,21 @@ namespace UiPathTeam.SSHConnector.Tests
         }
 
         [TestMethod]
+        public void SSHConnectScopeWithoutSSHRunCommandInsidePrivateKeyTest()
+        {
+            var connectScopeActivity = new SSHConnectScope
+            {
+                Host = Test_SSHHost,
+                Username = Test_SSHUsername,
+                PrivateKey = Test_SSHPrivateKeyFile,
+                Port = 22,
+                TimeoutMS = 3000
+            };
+
+            var output = WorkflowInvoker.Invoke(connectScopeActivity);
+        }
+
+        [TestMethod]
         public void SSHRunCommandWithBuiltClient()
         {
             var sshClient = new SshClient(Test_SSHHost, Test_SSHUsername, Test_SSHPassword);
@@ -116,9 +131,34 @@ namespace UiPathTeam.SSHConnector.Tests
 
             Assert.IsTrue(string.IsNullOrEmpty(Convert.ToString(output["Error"])));
             Assert.IsFalse(string.IsNullOrEmpty(Convert.ToString(output["Result"])));
-            Assert.IsTrue(Convert.ToInt32(output["ExitStatus"]) == 0);
+            Assert.IsTrue(Convert.ToInt32(output["ExitCode"]) == 0);
         }
 
+        [TestMethod]
+        public void SSHRunCommandWithBuiltClientPrivateKey()
+        {
+            
+
+            var pk = new PrivateKeyFile(Test_SSHPrivateKeyFile);
+            var keyFiles = new[] { pk };
+
+            var sshClient = new SshClient(Test_SSHHost, Test_SSHUsername, keyFiles);
+            sshClient.Connect();
+
+            var output = WorkflowInvoker.Invoke(new SSHRunCommand
+            {
+                Command = Test_SSHCommand,
+                TimeoutMS = 3000,
+                SSHClient = new InArgument<SshClient>((ctx) => sshClient)
+            });
+
+            sshClient.Disconnect();
+            sshClient.Dispose();
+
+            Assert.IsTrue(string.IsNullOrEmpty(Convert.ToString(output["Error"])));
+            Assert.IsFalse(string.IsNullOrEmpty(Convert.ToString(output["Result"])));
+            Assert.IsTrue(Convert.ToInt32(output["ExitCode"]) == 0);
+        }
 
         [TestMethod]
         [Ignore]
