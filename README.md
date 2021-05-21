@@ -21,7 +21,7 @@ Contains three custom activities that facilitate establishing an SSH connection 
 
 <b>Dependencies</b>
 
-SSH.NET >= 2016.1.0 
+SSH.NET >= 2020.0.0 
 
 <b>Installation guide</b>
 
