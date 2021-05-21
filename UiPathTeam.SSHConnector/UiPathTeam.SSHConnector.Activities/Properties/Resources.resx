@@ -185,6 +185,22 @@
     <value />
     <comment>activity description</comment>
   </data>
+  <data name="SSHConnectScope_EnableKeyboardInteractiveAuthenticationMethod_DisplayName" xml:space="preserve">
+    <value>Enable Keyboard Interactive Auth.</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SSHConnectScope_EnableKeyboardInteractiveAuthenticationMethod_Description" xml:space="preserve">
+    <value>Enables Keyboard Interactive Authentication Method.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SSHConnectScope_ExpectedPasswordPrompt_DisplayName" xml:space="preserve">
+    <value>Expected Password Prompt</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SSHConnectScope_ExpectedPasswordPrompt_Description" xml:space="preserve">
+    <value>Allows setting the expected Password prompt for Keyboard Interactive Authentication Method. Default value: "Password:"</value>
+    <comment>property description</comment>
+  </data>
   <data name="SSHConnectScope_Host_DisplayName" xml:space="preserve">
     <value>Host</value>
     <comment>property name</comment>
@@ -192,6 +208,10 @@
   <data name="SSHConnectScope_Host_Description" xml:space="preserve">
     <value>Hostname or IP of the server to connect to.</value>
     <comment>property description</comment>
+  </data>
+  <data name="SSHKeyboardInteractiveAuthenticationSettings_Category" xml:space="preserve">
+    <value>SSH Keyboard Interactive Authentication Settings</value>
+    <comment>category</comment>
   </data>
   <data name="SSHSettings_Category" xml:space="preserve">
     <value>SSH Settings</value>

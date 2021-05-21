@@ -160,6 +160,42 @@ namespace UiPathTeam.SSHConnector.Activities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enables Keyboard Interactive Authentication Method..
+        /// </summary>
+        public static string SSHConnectScope_EnableKeyboardInteractiveAuthenticationMethod_Description {
+            get {
+                return ResourceManager.GetString("SSHConnectScope_EnableKeyboardInteractiveAuthenticationMethod_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Keyboard Interactive Auth..
+        /// </summary>
+        public static string SSHConnectScope_EnableKeyboardInteractiveAuthenticationMethod_DisplayName {
+            get {
+                return ResourceManager.GetString("SSHConnectScope_EnableKeyboardInteractiveAuthenticationMethod_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allows setting the expected Password prompt for Keyboard Interactive Authentication Method. Default value: &quot;Password:&quot;.
+        /// </summary>
+        public static string SSHConnectScope_ExpectedPasswordPrompt_Description {
+            get {
+                return ResourceManager.GetString("SSHConnectScope_ExpectedPasswordPrompt_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected Password Prompt.
+        /// </summary>
+        public static string SSHConnectScope_ExpectedPasswordPrompt_DisplayName {
+            get {
+                return ResourceManager.GetString("SSHConnectScope_ExpectedPasswordPrompt_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hostname or IP of the server to connect to..
         /// </summary>
         public static string SSHConnectScope_Host_Description {
@@ -354,6 +390,15 @@ namespace UiPathTeam.SSHConnector.Activities.Properties {
         public static string SSHConnectScope_Username_DisplayName {
             get {
                 return ResourceManager.GetString("SSHConnectScope_Username_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SSH Keyboard Interactive Authentication Settings.
+        /// </summary>
+        public static string SSHKeyboardInteractiveAuthenticationSettings_Category {
+            get {
+                return ResourceManager.GetString("SSHKeyboardInteractiveAuthenticationSettings_Category", resourceCulture);
             }
         }
         

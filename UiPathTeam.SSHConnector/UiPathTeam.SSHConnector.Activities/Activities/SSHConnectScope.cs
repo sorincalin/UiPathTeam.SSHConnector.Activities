@@ -39,6 +39,16 @@ namespace UiPathTeam.SSHConnector.Activities
         [LocalizedDescription(nameof(Resources.Timeout_Description))]
         public InArgument<int> TimeoutMS { get; set; } = 60000;
 
+        [LocalizedDisplayName(nameof(Resources.SSHConnectScope_EnableKeyboardInteractiveAuthenticationMethod_DisplayName))]
+        [LocalizedDescription(nameof(Resources.SSHConnectScope_EnableKeyboardInteractiveAuthenticationMethod_Description))]
+        [LocalizedCategory(nameof(Resources.SSHKeyboardInteractiveAuthenticationSettings_Category))]
+        public InArgument<bool> EnableKeyboardInteractiveAuthenticationMethod { get; set; }
+
+        [LocalizedDisplayName(nameof(Resources.SSHConnectScope_ExpectedPasswordPrompt_DisplayName))]
+        [LocalizedDescription(nameof(Resources.SSHConnectScope_ExpectedPasswordPrompt_Description))]
+        [LocalizedCategory(nameof(Resources.SSHKeyboardInteractiveAuthenticationSettings_Category))]
+        public InArgument<string> ExpectedPasswordPrompt { get; set; } = "Password:";
+
         [LocalizedDisplayName(nameof(Resources.SSHConnectScope_Host_DisplayName))]
         [LocalizedDescription(nameof(Resources.SSHConnectScope_Host_Description))]
         [LocalizedCategory(nameof(Resources.SSHSettings_Category))]
@@ -106,9 +116,10 @@ namespace UiPathTeam.SSHConnector.Activities
         private readonly IObjectContainer _objectContainer;
 
         private SshClient sshClient;
+        private string sshPassword;
         private ShellStream currentShellStream;
         private Regex expectedPromptRegex;
-
+        private string expectedPasswordPrompt;
         #endregion
 
 
@@ -155,17 +166,7 @@ namespace UiPathTeam.SSHConnector.Activities
         {
             // Inputs
             var activityTimeout = TimeoutMS.Get(context);
-            var host = Host.Get(context);
-            var port = Port.Get(context);
-            var privatekey = PrivateKey.Get(context);
-            var username = Username.Get(context);
-            var password = Password.Get(context);
-            var shellExpectedPrompt = ShellExpectedPrompt.Get(context);
-            var proxyHost = ProxyHost.Get(context);
-            var proxyPort = ProxyPort.Get(context);
-            var proxyUsername = ProxyUsername.Get(context);
-            var proxyPassword = ProxyPassword.Get(context);
-
+            
             // Set a timeout on the execution
             var task = ExecuteWithTimeout(context, cancellationToken);
             if (await Task.WhenAny(task, Task.Delay(activityTimeout, cancellationToken)) == task)
@@ -192,9 +193,13 @@ namespace UiPathTeam.SSHConnector.Activities
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            var sshPassword = new NetworkCredential("", Password.Get(context)).Password;
+            sshPassword = new NetworkCredential("", Password.Get(context)).Password;
+            expectedPasswordPrompt = ExpectedPasswordPrompt.Get(context);
+
             var proxyPassword = new NetworkCredential("", ProxyPassword.Get(context)).Password;
             var sshTimeout = TimeSpan.FromMilliseconds(SSHTimeoutMS.Get(context));
+            var keybAuth = new KeyboardInteractiveAuthenticationMethod(Username.Get(context));
+            keybAuth.AuthenticationPrompt += new EventHandler<AuthenticationPromptEventArgs>(HandleKeyEvent);
 
             ConnectionInfo connectionInfo;
             if (!string.IsNullOrEmpty(ProxyHost.Get(context))) // Proxy defined
@@ -203,6 +208,8 @@ namespace UiPathTeam.SSHConnector.Activities
                 {
                     if (!string.IsNullOrEmpty(PrivateKey.Get(context)))
                         connectionInfo = new PrivateKeyConnectionInfo(Host.Get(context), Port.Get(context), Username.Get(context), ProxyTypes.Http, ProxyHost.Get(context), ProxyPort.Get(context), ProxyUsername.Get(context), proxyPassword, new[] { new PrivateKeyFile(PrivateKey.Get(context)) });
+                    else if (EnableKeyboardInteractiveAuthenticationMethod.Get(context))
+                        connectionInfo = new ConnectionInfo(Host.Get(context), Port.Get(context), Username.Get(context), ProxyTypes.Http, ProxyHost.Get(context), ProxyPort.Get(context), ProxyUsername.Get(context), proxyPassword, keybAuth);
                     else
                         connectionInfo = new PasswordConnectionInfo(Host.Get(context), Port.Get(context), Username.Get(context), Encoding.UTF8.GetBytes(sshPassword), ProxyTypes.Http, ProxyHost.Get(context), ProxyPort.Get(context), ProxyUsername.Get(context), proxyPassword);
                 }
@@ -218,6 +225,8 @@ namespace UiPathTeam.SSHConnector.Activities
             {
                 if (!string.IsNullOrEmpty(PrivateKey.Get(context)))
                     connectionInfo = new PrivateKeyConnectionInfo(Host.Get(context), Port.Get(context), Username.Get(context), new[] { new PrivateKeyFile(PrivateKey.Get(context)) });
+                else if (EnableKeyboardInteractiveAuthenticationMethod.Get(context))
+                    connectionInfo = new ConnectionInfo(Host.Get(context), Port.Get(context), Username.Get(context), keybAuth);
                 else
                     connectionInfo = new PasswordConnectionInfo(Host.Get(context), Port.Get(context), Username.Get(context), sshPassword);
             }
@@ -245,6 +254,17 @@ namespace UiPathTeam.SSHConnector.Activities
 
 
         #region Events
+
+        private void HandleKeyEvent(object sender, AuthenticationPromptEventArgs e)
+        {
+            foreach (AuthenticationPrompt prompt in e.Prompts)
+            {
+                if (prompt.Request.IndexOf(expectedPasswordPrompt, StringComparison.InvariantCultureIgnoreCase) != -1)
+                {
+                    prompt.Response = sshPassword;
+                }
+            }
+        }
 
         private void OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
         {
