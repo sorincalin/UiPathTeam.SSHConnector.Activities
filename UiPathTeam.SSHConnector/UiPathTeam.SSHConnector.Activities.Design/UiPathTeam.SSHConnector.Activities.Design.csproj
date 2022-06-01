@@ -130,7 +130,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="SSH.NET" Version="2020.0.0" />
+    <PackageReference Include="SSH.NET" Version="2020.0.2" />
   </ItemGroup>
   <Import Project="..\..\Shared\UiPath.Shared.Activities.Design\UiPath.Shared.Activities.Design.projitems" Label="Shared" />
 </Project>
