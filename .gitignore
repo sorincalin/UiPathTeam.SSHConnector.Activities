@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 *.nupkg
+/UiPathTeam.SSHConnector/UiPathTeam.SSHConnector.Activities.Design/Properties/PublishProfiles/FolderProfile.pubxml
